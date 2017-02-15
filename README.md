@@ -76,8 +76,8 @@ it will default to `build-vs-output`.  For example:
 
     build-vs 12 ..\generated-fmus
 
-Terms of use
-------------
+Licence
+-------
 This software is distributed under the 3-Clause BSD License.
 (See accompanying file LICENCE.txt or copy at [GitHub](
-https://raw.githubusercontent.com/viproma/demo-fmus/master/LICENCE.txt).)
+https://github.com/viproma/demo-fmus/raw/master/LICENCE.txt).)

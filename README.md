@@ -56,7 +56,7 @@ scripts:
     generators. Use this to build FMUs that support both 32- and 64-bit
     Windows platforms.
 
-  * `build-make.cmd`, a Bash script that uses CMake's Makefile generator.
+  * `build-make.sh`, a Bash script that uses CMake's Makefile generator.
     Use this to build FMUs that support both 32- and 64-bit variants
     of whichever UNIX-like platform you run it on.
 
@@ -75,6 +75,16 @@ is an optional path to a directory for the output files.  If not specified,
 it will default to `build-vs-output`.  For example:
 
     build-vs 12 ..\generated-fmus
+
+The procedure for UNIX-like systems is similar, except you don't specify
+the compiler version:
+
+    ./build-make.sh [output directory]
+
+Here, the output directory will default to `build-make-output` if you don't
+specify it.  Example:
+
+    ./build-make.sh ../generated-fmus
 
 Licence
 -------

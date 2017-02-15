@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<fmiModelDescription
+  fmiVersion="1.0"
+  modelName="spring_1d"
+  modelIdentifier="spring_1d"
+  guid="@FMU_UUID@"
+  author="Lars Tandle Kyllingstad and Severin Simon Sadjina"
+  description="Hooke spring in one dimension"
+  version="0.2"
+  numberOfContinuousStates="0"
+  numberOfEventIndicators="0">
+<ModelVariables>
+  <ScalarVariable name="pos_a" valueReference="0" description="position of endpoint A" causality="input">
+     <Real start="0.0" />
+  </ScalarVariable>
+  <ScalarVariable name="pos_b" valueReference="1" description="position of endpoint B" causality="input">
+     <Real start="1.0" />
+  </ScalarVariable>
+  <ScalarVariable name="force_a" valueReference="2" description="force exerted by endpoint A" causality="output">
+     <Real start="0.0" fixed="true" />
+  </ScalarVariable>
+  <ScalarVariable name="force_b" valueReference="3" description="force exerted by endpoint B" causality="output">
+     <Real start="0.0" fixed="true" />
+  </ScalarVariable>
+  <ScalarVariable name="length" valueReference="4" description="uncompressed length" causality="input" variability="discrete">
+     <Real start="1.0" fixed="true" />
+  </ScalarVariable>
+  <ScalarVariable name="stiffness" valueReference="5" description="stiffness" causality="input" variability="discrete">
+     <Real start="1.0" fixed="true" />
+  </ScalarVariable>
+</ModelVariables>
+
+<Implementation>
+  <CoSimulation_StandAlone>
+    <Capabilities
+      canHandleVariableCommunicationStepSize="true"
+      canHandleEvents="true"/>
+  </CoSimulation_StandAlone>
+</Implementation>
+</fmiModelDescription>

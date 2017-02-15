@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<fmiModelDescription
+  fmiVersion="1.0"
+  modelName="mass_1d"
+  modelIdentifier="mass_1d"
+  guid="@FMU_UUID@"
+  author="Severin Simon Sadjina and Lars Tandle Kyllingstad"
+  description="Point mass with one degree of freedom"
+  version="0.2"
+  numberOfContinuousStates="2"
+  numberOfEventIndicators="0">
+<ModelVariables>
+  <ScalarVariable name="force1" valueReference="0" description="force 1 on mass" causality="input">
+     <Real start="0.0" />
+  </ScalarVariable>
+  <ScalarVariable name="force2" valueReference="1" description="force 2 on mass" causality="input">
+     <Real start="0.0" />
+  </ScalarVariable>
+  <ScalarVariable name="pos" valueReference="2" description="position" causality="output">
+     <Real start="0.0" fixed="true" />
+  </ScalarVariable>
+  <ScalarVariable name="der(pos)" valueReference="3" description="derivative of position (= velocity)" causality="output">
+     <Real start="0.0" fixed="true" />
+  </ScalarVariable>
+  <ScalarVariable name="vel" valueReference="3" description="velocity" alias="alias" causality="output">
+     <Real start="0.0" fixed="true" />
+  </ScalarVariable>
+  <ScalarVariable name="der(vel)" valueReference="4" description="acceleration">
+     <Real start="0.0" fixed="true" />
+  </ScalarVariable>
+  <ScalarVariable name="mass" valueReference="5" description="mass" causality="input" variability="discrete">
+     <Real start="1.0" fixed="true" />
+  </ScalarVariable>
+</ModelVariables>
+
+<Implementation>
+  <CoSimulation_StandAlone>
+    <Capabilities
+      canHandleVariableCommunicationStepSize="true"
+      canHandleEvents="true"/>
+  </CoSimulation_StandAlone>
+</Implementation>
+</fmiModelDescription>

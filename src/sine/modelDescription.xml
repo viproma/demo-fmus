@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<fmiModelDescription
+    fmiVersion="1.0"
+    modelName="sfh.larky.sine"
+    modelIdentifier="sine"
+    guid="@FMU_UUID@"
+    author="Lars Tandle Kyllingstad"
+    description="Sine signal: y = a + b sin(w t + k x + d)"
+    version="0.1"
+    variableNamingConvention="structured"
+    numberOfContinuousStates="0"
+    numberOfEventIndicators="0">
+
+    <ModelVariables>
+        <ScalarVariable name="x" valueReference="0" variability="continuous" causality="input" ><Real start="0.0" /></ScalarVariable>
+        <ScalarVariable name="a" valueReference="1" variability="parameter"  causality="input" ><Real start="0.0" /></ScalarVariable>
+        <ScalarVariable name="b" valueReference="2" variability="parameter"  causality="input" ><Real start="1.0" /></ScalarVariable>
+        <ScalarVariable name="w" valueReference="3" variability="parameter"  causality="input" ><Real start="1.0" /></ScalarVariable>
+        <ScalarVariable name="k" valueReference="4" variability="parameter"  causality="input" ><Real start="0.0" /></ScalarVariable>
+        <ScalarVariable name="d" valueReference="5" variability="parameter"  causality="input" ><Real start="0.0" /></ScalarVariable>
+        <ScalarVariable name="y" valueReference="6" variability="continuous" causality="output"><Real start="0.0" /></ScalarVariable>
+    </ModelVariables>
+
+    <Implementation>
+        <CoSimulation_StandAlone>
+            <Capabilities
+                canHandleVariableCommunicationStepSize="true"
+                canBeInstantiatedOnlyOncePerProcess="false" />
+        </CoSimulation_StandAlone>
+    </Implementation>
+</fmiModelDescription>

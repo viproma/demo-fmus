@@ -109,7 +109,7 @@ foreach(fmuName IN LISTS fmuNames)
             "${outputModelDescription}"
             "${outputUuidHeader}"
             "FMU_UUID"
-        DEPENDS "fmu-uuid-gen" "${sourceModelDescription}"
+        DEPENDS "${sourceModelDescription}"
         VERBATIM
     )
     add_custom_target(${uuidTarget}

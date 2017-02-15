@@ -15,7 +15,7 @@ set(fmuNames "identity" "mass_1d" "sine" "spring_1d")
 # ==============================================================================
 
 if(CMAKE_COMPILER_IS_GNUCXX)
-    add_compile_options("-std=c++1y" "-Wall" "-Wextra")
+    add_compile_options("-std=c++1y" "-Wall" "-Wextra" "-Werror")
     if(FMU_USE_STATIC_RUNTIME)
         add_compile_options("-static")
     endif()

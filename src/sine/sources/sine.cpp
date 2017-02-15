@@ -12,7 +12,8 @@ then we have:
     y = a + b sin(w t + k x + d)
 */
 #include <cmath>
-#include "cppfmu_cs.hpp"
+#include <cstring>
+#include <cppfmu_cs.hpp>
 #include "sine-fmu-uuid.h"
 
 
@@ -118,15 +119,15 @@ private:
 
 
 cppfmu::UniquePtr<cppfmu::SlaveInstance> CppfmuInstantiateSlave(
-    fmiString  instanceName,
+    fmiString  /*instanceName*/,
     fmiString  fmuGUID,
-    fmiString  fmuLocation,
-    fmiString  mimeType,
-    fmiReal    timeout,
-    fmiBoolean visible,
-    fmiBoolean interactive,
+    fmiString  /*fmuLocation*/,
+    fmiString  /*mimeType*/,
+    fmiReal    /*timeout*/,
+    fmiBoolean /*visible*/,
+    fmiBoolean /*interactive*/,
     cppfmu::Memory memory,
-    cppfmu::Logger logger)
+    cppfmu::Logger /*logger*/)
 {
     if (std::strcmp(fmuGUID, FMU_UUID) != 0) {
         throw std::runtime_error("FMU GUID mismatch");

@@ -84,9 +84,9 @@ endif()
 # Create targets
 set(uuidOutputDir "${CMAKE_BINARY_DIR}/fmu-uuids")
 set(fmuIncludeDirs
-    "fmi"
-    "cppfmu"
-    ${uuidOutputDir}
+    "${CMAKE_SOURCE_DIR}/fmi"
+    "${CMAKE_SOURCE_DIR}/cppfmu"
+    "${uuidOutputDir}"
 )
 foreach(fmuName IN LISTS fmuNames)
     set(dlTarget "${fmuName}")
@@ -119,13 +119,10 @@ foreach(fmuName IN LISTS fmuNames)
     )
 
     # Target to build dynamic library
-    set(sourceFile "${sourceDir}/sources/${fmuName}.c")
-    if(EXISTS "${sourceFile}pp")
-        set(sources "${sourceFile}pp" ${cppfmuSources} "${sourceModelDescription}")
-    else()
-        set(sources "${sourceFile}" "${sourceModelDescription}")
-    endif()
-    add_library(${dlTarget} MODULE ${sources})
+    add_library(${dlTarget} MODULE
+        "${sourceDir}/sources/${fmuName}.cpp"
+        ${cppfmuSources}
+        "${sourceModelDescription}")
     add_dependencies(${dlTarget} ${uuidTarget})
     target_compile_definitions(${dlTarget} PRIVATE
         "MODEL_IDENTIFIER=${fmuName}")

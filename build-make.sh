@@ -1,29 +1,50 @@
 #!/bin/bash
-if [ "$1" = "-d" ]; then
-    config="debug"
+
+# Usage: build-make.sh  [output directory]
+#
+# The output directory will be created if it does not exist.
+# If not specified, it defaults to "build-make-output".
+set -e
+
+if [ -z "$1" ]; then
+    readonly outputDir="build-make-output"
 else
-    config="release"
+    readonly outputDir="$1"
 fi
 
-for w in 32 64; do
-    mFlag="-m$w"
-    buildDir="build$w-$config"
+readonly relSourceDir=`dirname $0`
+readonly sourceDir=`cd $relSourceDir; pwd`
 
-    mkdir "$buildDir"
-    pushd "$buildDir"
-    cmake -DCMAKE_BUILD_TYPE=$config -DCMAKE_C_FLAGS=$mFlag -DCMAKE_CXX_FLAGS=$mFlag -DCMAKE_SHARED_LINKER_FLAGS=$mFlag .. || exit 2
-    make || exit 3
-    popd
+mkdir -p "$outputDir"
+pushd "$outputDir"
+
+for c in debug release; do
+    fmuDir="fmu"
+    for w in 32 64; do
+        mFlag="-m$w"
+        buildDir="build-$w-$c"
+
+        mkdir -p "$buildDir"
+        pushd "$buildDir"
+        cmake -DCMAKE_BUILD_TYPE=$c \
+              -DCMAKE_C_FLAGS=$mFlag \
+              -DCMAKE_CXX_FLAGS=$mFlag \
+              -DCMAKE_SHARED_LINKER_FLAGS=$mFlag \
+              -DFMU_OUTPUT_DIR="../$fmuDir" \
+              $sourceDir
+        make
+        popd # $buildDir
+    done
+
+    pushd "$fmuDir/$c"
+    for d in `find . -maxdepth 1 -mindepth 1 -type d -printf '%f\n'`; do
+        echo " "
+        echo "Building $d.fmu"
+        pushd "$d"
+        zip -r "../$d.fmu" * || exit 4
+        popd
+    done
+    popd # $fmuDir
 done
 
-fmuOutDir="build-fmu/$config"
-mkdir "$fmuOutDir"
-pushd $fmuOutDir
-for d in `find . -maxdepth 1 -mindepth 1 -type d -printf '%f\n'`; do
-    echo " "
-    echo "Building $d.fmu"
-    pushd "$d"
-    zip -r "../$d.fmu" * || exit 4
-    popd
-done
-popd
+popd # $outputDir

@@ -1,0 +1,21 @@
+; Simple functionality test for the 'identity' FMU.
+slaves
+{
+    id { type no.viproma.demo.identity }
+}
+
+scenario
+{
+    1 {
+        id.realIn     0.5
+        id.integerIn  10
+        id.booleanIn  true
+        id.stringIn   "foo"
+    }
+    3 {
+        id.realIn     0.25
+        id.integerIn  1000
+        id.booleanIn  false
+        id.stringIn   "bar"
+    }
+}

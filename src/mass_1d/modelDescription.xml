@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <fmiModelDescription
   fmiVersion="1.0"
-  modelName="mass_1d"
+  modelName="no.viproma.demo.mass_1d"
   modelIdentifier="mass_1d"
   guid="@FMU_UUID@"
   author="Severin Simon Sadjina and Lars Tandle Kyllingstad"
   description="Point mass with one degree of freedom"
-  version="0.2"
+  version="0.3"
   numberOfContinuousStates="2"
   numberOfEventIndicators="0">
 <ModelVariables>

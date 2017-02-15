@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <fmiModelDescription
   fmiVersion="1.0"
-  modelName="spring_1d"
+  modelName="no.viproma.demo.spring_1d"
   modelIdentifier="spring_1d"
   guid="@FMU_UUID@"
   author="Lars Tandle Kyllingstad and Severin Simon Sadjina"
-  description="Hooke spring in one dimension"
-  version="0.2"
+  description="Linear spring in one dimension"
+  version="0.3"
   numberOfContinuousStates="0"
   numberOfEventIndicators="0">
 <ModelVariables>

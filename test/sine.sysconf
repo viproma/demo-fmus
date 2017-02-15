@@ -2,13 +2,13 @@
 ; mathematical sine function for comparison.
 slaves {
     spring {
-        type spring_1d
+        type no.viproma.demo.spring_1d
     }
     mass {
-        type mass_1d
+        type no.viproma.demo.mass_1d
     }
     sine {
-        type sfh.larky.sine
+        type no.viproma.demo.sine
         init {
             a 1.0
             d -1.57079632679

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <fmiModelDescription
     fmiVersion="1.0"
-    modelName="sfh.larky.identity"
+    modelName="no.viproma.demo.identity"
     modelIdentifier="identity"
     guid="@FMU_UUID@"
     author="Lars Tandle Kyllingstad"
-    description="Has one input and one output of each type. Outputs are always set equal to inputs"
-    version="0.1"
+    description="Has one input and one output of each type, and outputs are always set equal to inputs"
+    version="0.2"
     variableNamingConvention="structured"
     numberOfContinuousStates="0"
     numberOfEventIndicators="0">

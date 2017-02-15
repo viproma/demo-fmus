@@ -1,19 +1,12 @@
-/* Copyright 2015-2017, SINTEF Ocean.
-   Distributed under the 3-Clause BSD License.
-   (See accompanying file LICENCE.txt or copy at
-   https://github.com/viproma/demo-fmus/raw/master/LICENCE.txt.) */
+// Copyright 2015-2017, SINTEF Ocean.
+// Distributed under the 3-Clause BSD License.
+// (See accompanying file LICENCE.txt or copy at
+// https://github.com/viproma/demo-fmus/raw/master/LICENCE.txt.)
 
-/*
-An FMU with one input and one output of each data type (real, integer, boolean
-and string). The value of each output is always identical to the value of the
-corresponding input.
-*/
 #include <cmath>
 #include <cstring>
 #include <cppfmu_cs.hpp>
 #include "identity-fmu-uuid.h"
-
-
 
 class Identity : public cppfmu::SlaveInstance
 {

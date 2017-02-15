@@ -1,21 +1,12 @@
-/* Copyright 2015-2017, SINTEF Ocean.
-   Distributed under the 3-Clause BSD License.
-   (See accompanying file LICENCE.txt or copy at
-   https://github.com/viproma/demo-fmus/raw/master/LICENCE.txt.) */
+// Copyright 2015-2017, SINTEF Ocean.
+// Distributed under the 3-Clause BSD License.
+// (See accompanying file LICENCE.txt or copy at
+// https://github.com/viproma/demo-fmus/raw/master/LICENCE.txt.)
 
-/*
-A sine function.
-
-If x is an input; y is an output; a, b, w, k, d are parameters; and t is time;
-then we have:
-
-    y = a + b sin(w t + k x + d)
-*/
 #include <cmath>
 #include <cstring>
 #include <cppfmu_cs.hpp>
 #include "sine-fmu-uuid.h"
-
 
 enum
 {

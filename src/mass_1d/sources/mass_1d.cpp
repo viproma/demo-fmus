@@ -1,7 +1,7 @@
-/* Copyright 2015-2017, SINTEF Ocean.
-   Distributed under the 3-Clause BSD License.
-   (See accompanying file LICENCE.txt or copy at
-   https://github.com/viproma/demo-fmus/raw/master/LICENCE.txt.) */
+// Copyright 2015-2017, SINTEF Ocean.
+// Distributed under the 3-Clause BSD License.
+// (See accompanying file LICENCE.txt or copy at
+// https://github.com/viproma/demo-fmus/raw/master/LICENCE.txt.)
 
 #include <cstring>
 #include <cppfmu_cs.hpp>

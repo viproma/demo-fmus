@@ -103,6 +103,8 @@ foreach(fmuName IN LISTS fmuNames)
     add_custom_command(
         OUTPUT "${outputModelDescription}" "${outputUuidHeader}"
         COMMAND
+            "${CMAKE_COMMAND}" "-E" "make_directory" "${uuidOutputDir}"
+        COMMAND
             "${fmuUuidCommand}"
             "${sourceModelDescription}"
             "@FMU_UUID@"

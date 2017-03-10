@@ -115,7 +115,7 @@ foreach(fmuName IN LISTS fmuNames)
         VERBATIM
     )
     add_custom_target(${uuidTarget}
-        DEPENDS "${outputModelDescription}" "${outputUuidHeader}"
+        DEPENDS fmu-uuid "${outputModelDescription}" "${outputUuidHeader}"
     )
 
     # Target to build dynamic library

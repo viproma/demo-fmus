@@ -6,7 +6,7 @@
     guid="@FMU_UUID@"
     author="Lars Tandle Kyllingstad"
     description="Has one input and one output of each type, and outputs are always set equal to inputs"
-    version="0.2"
+    version="0.3"
     variableNamingConvention="structured"
     numberOfContinuousStates="0"
     numberOfEventIndicators="0">
@@ -15,7 +15,7 @@
         <ScalarVariable name="realIn"     valueReference="0" variability="continuous" causality="input"               ><Real    start="0.0"   /></ScalarVariable>
         <ScalarVariable name="integerIn"  valueReference="0" variability="continuous" causality="input"               ><Integer start="0"     /></ScalarVariable>
         <ScalarVariable name="booleanIn"  valueReference="0" variability="continuous" causality="input"               ><Boolean start="false" /></ScalarVariable>
-        <ScalarVariable name="stringIn"   valueReference="0" variability="continuous" causality="input"               ><String  start=" "     /></ScalarVariable>
+        <ScalarVariable name="stringIn"   valueReference="0" variability="continuous" causality="input"               ><String  start=""      /></ScalarVariable>
         <ScalarVariable name="realOut"    valueReference="0" variability="continuous" causality="output" alias="alias"><Real                  /></ScalarVariable>
         <ScalarVariable name="integerOut" valueReference="0" variability="continuous" causality="output" alias="alias"><Integer               /></ScalarVariable>
         <ScalarVariable name="booleanOut" valueReference="0" variability="continuous" causality="output" alias="alias"><Boolean               /></ScalarVariable>

@@ -12,14 +12,14 @@
     numberOfEventIndicators="0">
 
     <ModelVariables>
-        <ScalarVariable name="realIn"     valueReference="0" variability="continuous" causality="input"               ><Real    start="0.0"   /></ScalarVariable>
-        <ScalarVariable name="integerIn"  valueReference="0" variability="continuous" causality="input"               ><Integer start="0"     /></ScalarVariable>
-        <ScalarVariable name="booleanIn"  valueReference="0" variability="continuous" causality="input"               ><Boolean start="false" /></ScalarVariable>
-        <ScalarVariable name="stringIn"   valueReference="0" variability="continuous" causality="input"               ><String  start=""      /></ScalarVariable>
-        <ScalarVariable name="realOut"    valueReference="0" variability="continuous" causality="output" alias="alias"><Real                  /></ScalarVariable>
-        <ScalarVariable name="integerOut" valueReference="0" variability="continuous" causality="output" alias="alias"><Integer               /></ScalarVariable>
-        <ScalarVariable name="booleanOut" valueReference="0" variability="continuous" causality="output" alias="alias"><Boolean               /></ScalarVariable>
-        <ScalarVariable name="stringOut"  valueReference="0" variability="continuous" causality="output" alias="alias"><String                /></ScalarVariable>
+        <ScalarVariable name="realIn"     valueReference="0" variability="discrete" causality="input"               ><Real    start="0.0"   /></ScalarVariable>
+        <ScalarVariable name="integerIn"  valueReference="0" variability="discrete" causality="input"               ><Integer start="0"     /></ScalarVariable>
+        <ScalarVariable name="booleanIn"  valueReference="0" variability="discrete" causality="input"               ><Boolean start="false" /></ScalarVariable>
+        <ScalarVariable name="stringIn"   valueReference="0" variability="discrete" causality="input"               ><String  start=""      /></ScalarVariable>
+        <ScalarVariable name="realOut"    valueReference="0" variability="discrete" causality="output" alias="alias"><Real                  /></ScalarVariable>
+        <ScalarVariable name="integerOut" valueReference="0" variability="discrete" causality="output" alias="alias"><Integer               /></ScalarVariable>
+        <ScalarVariable name="booleanOut" valueReference="0" variability="discrete" causality="output" alias="alias"><Boolean               /></ScalarVariable>
+        <ScalarVariable name="stringOut"  valueReference="0" variability="discrete" causality="output" alias="alias"><String                /></ScalarVariable>
     </ModelVariables>
 
     <Implementation>

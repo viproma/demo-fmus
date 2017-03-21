@@ -22,7 +22,7 @@ public:
         m_real    = 0.0;
         m_integer = 0;
         m_boolean = fmiFalse;
-        m_string  = " ";
+        m_string  = "";
     }
 
     void SetReal(

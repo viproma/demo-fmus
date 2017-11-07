@@ -48,7 +48,7 @@ file(GLOB cppfmuSources "${CMAKE_SOURCE_DIR}/cppfmu/*.?pp")
 include(ExternalProject)
 set(fmuUuidDir "${CMAKE_BINARY_DIR}/external")
 ExternalProject_Add(fmu-uuid
-    GIT_REPOSITORY "git@github.com:viproma/fmu-uuid.git"
+    GIT_REPOSITORY "https://github.com/viproma/fmu-uuid.git"
     CMAKE_ARGS "-DCMAKE_INSTALL_PREFIX:PATH=${fmuUuidDir}"
 )
 set(fmuUuidCommand "${fmuUuidDir}/bin/fmu-uuid")

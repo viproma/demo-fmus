@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <fmiModelDescription
-    fmiVersion="1.0"
+    fmiVersion="2.0"
     modelName="no.viproma.demo.sine"
-    modelIdentifier="sine"
     guid="@FMU_UUID@"
-    author="Lars Tandle Kyllingstad"
     description="Sine signal: y = a + b sin(w t + k x + d)"
+    author="Lars Tandle Kyllingstad"
     version="0.2"
-    variableNamingConvention="structured"
-    numberOfContinuousStates="0"
-    numberOfEventIndicators="0">
+    copyright="Copyright 2015-2019, SINTEF Ocean"
+    license="3-Clause BSD license">
+
+    <CoSimulation
+        modelIdentifier="sine"
+        canHandleVariableCommunicationStepSize="true" />
 
     <ModelVariables>
-        <ScalarVariable name="x" valueReference="0" variability="continuous" causality="input" ><Real start="0.0" /></ScalarVariable>
-        <ScalarVariable name="a" valueReference="1" variability="parameter"  causality="input" ><Real start="0.0" /></ScalarVariable>
-        <ScalarVariable name="b" valueReference="2" variability="parameter"  causality="input" ><Real start="1.0" /></ScalarVariable>
-        <ScalarVariable name="w" valueReference="3" variability="parameter"  causality="input" ><Real start="1.0" /></ScalarVariable>
-        <ScalarVariable name="k" valueReference="4" variability="parameter"  causality="input" ><Real start="0.0" /></ScalarVariable>
-        <ScalarVariable name="d" valueReference="5" variability="parameter"  causality="input" ><Real start="0.0" /></ScalarVariable>
-        <ScalarVariable name="y" valueReference="6" variability="continuous" causality="output"><Real start="0.0" /></ScalarVariable>
+        <ScalarVariable name="x" valueReference="0" variability="continuous" causality="input"                    ><Real start="0.0" /></ScalarVariable>
+        <ScalarVariable name="a" valueReference="1" variability="tunable"    causality="parameter"                ><Real start="0.0" /></ScalarVariable>
+        <ScalarVariable name="b" valueReference="2" variability="tunable"    causality="parameter"                ><Real start="1.0" /></ScalarVariable>
+        <ScalarVariable name="w" valueReference="3" variability="tunable"    causality="parameter"                ><Real start="1.0" /></ScalarVariable>
+        <ScalarVariable name="k" valueReference="4" variability="tunable"    causality="parameter"                ><Real start="0.0" /></ScalarVariable>
+        <ScalarVariable name="d" valueReference="5" variability="tunable"    causality="parameter"                ><Real start="0.0" /></ScalarVariable>
+        <ScalarVariable name="y" valueReference="6" variability="continuous" causality="output"    initial="exact"><Real start="0.0" /></ScalarVariable>
     </ModelVariables>
 
-    <Implementation>
-        <CoSimulation_StandAlone>
-            <Capabilities
-                canHandleVariableCommunicationStepSize="true"
-                canBeInstantiatedOnlyOncePerProcess="false" />
-        </CoSimulation_StandAlone>
-    </Implementation>
+    <ModelStructure>
+        <Outputs>
+            <Unknown index="7" />
+        </Outputs>
+    </ModelStructure>
 </fmiModelDescription>

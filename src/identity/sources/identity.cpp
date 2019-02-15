@@ -1,4 +1,4 @@
-// Copyright 2015-2017, SINTEF Ocean.
+// Copyright 2015-2019, SINTEF Ocean.
 // Distributed under the 3-Clause BSD License.
 // (See accompanying file LICENCE.txt or copy at
 // https://github.com/viproma/demo-fmus/raw/master/LICENCE.txt.)
@@ -21,14 +21,14 @@ public:
     {
         m_real    = 0.0;
         m_integer = 0;
-        m_boolean = fmiFalse;
+        m_boolean = cppfmu::FMIFalse;
         m_string  = "";
     }
 
     void SetReal(
-        const fmiValueReference vr[],
+        const cppfmu::FMIValueReference vr[],
         std::size_t nvr,
-        const fmiReal value[]) override
+        const cppfmu::FMIReal value[]) override
     {
         for (std::size_t i = 0; i < nvr; ++i) {
             if (vr[i] != 0) throw std::logic_error("Invalid value reference");
@@ -37,9 +37,9 @@ public:
     }
 
     void SetInteger(
-        const fmiValueReference vr[],
+        const cppfmu::FMIValueReference vr[],
         std::size_t nvr,
-        const fmiInteger value[]) override
+        const cppfmu::FMIInteger value[]) override
     {
         for (std::size_t i = 0; i < nvr; ++i) {
             if (vr[i] != 0) throw std::logic_error("Invalid value reference");
@@ -48,9 +48,9 @@ public:
     }
 
     void SetBoolean(
-        const fmiValueReference vr[],
+        const cppfmu::FMIValueReference vr[],
         std::size_t nvr,
-        const fmiBoolean value[]) override
+        const cppfmu::FMIBoolean value[]) override
     {
         for (std::size_t i = 0; i < nvr; ++i) {
             if (vr[i] != 0) throw std::logic_error("Invalid value reference");
@@ -59,9 +59,9 @@ public:
     }
 
     void SetString(
-        const fmiValueReference vr[],
+        const cppfmu::FMIValueReference vr[],
         std::size_t nvr,
-        const fmiString value[]) override
+        const cppfmu::FMIString value[]) override
     {
         for (std::size_t i = 0; i < nvr; ++i) {
             if (vr[i] != 0) throw std::logic_error("Invalid value reference");
@@ -70,9 +70,9 @@ public:
     }
 
     void GetReal(
-        const fmiValueReference vr[],
+        const cppfmu::FMIValueReference vr[],
         std::size_t nvr,
-        fmiReal value[]) const override
+        cppfmu::FMIReal value[]) const override
     {
         for (std::size_t i = 0; i < nvr; ++i) {
             if (vr[i] != 0) throw std::logic_error("Invalid value reference");
@@ -81,9 +81,9 @@ public:
     }
 
     void GetInteger(
-        const fmiValueReference vr[],
+        const cppfmu::FMIValueReference vr[],
         std::size_t nvr,
-        fmiInteger value[]) const override
+        cppfmu::FMIInteger value[]) const override
     {
         for (std::size_t i = 0; i < nvr; ++i) {
             if (vr[i] != 0) throw std::logic_error("Invalid value reference");
@@ -92,9 +92,9 @@ public:
     }
 
     void GetBoolean(
-        const fmiValueReference vr[],
+        const cppfmu::FMIValueReference vr[],
         std::size_t nvr,
-        fmiBoolean value[]) const override
+        cppfmu::FMIBoolean value[]) const override
     {
         for (std::size_t i = 0; i < nvr; ++i) {
             if (vr[i] != 0) throw std::logic_error("Invalid value reference");
@@ -103,9 +103,9 @@ public:
     }
 
     void GetString(
-        const fmiValueReference vr[],
+        const cppfmu::FMIValueReference vr[],
         std::size_t nvr,
-        fmiString value[]) const override
+        cppfmu::FMIString value[]) const override
     {
         for (std::size_t i = 0; i < nvr; ++i) {
             if (vr[i] != 0) throw std::logic_error("Invalid value reference");
@@ -114,30 +114,30 @@ public:
     }
 
     bool DoStep(
-        fmiReal /*currentCommunicationPoint*/,
-        fmiReal /*dt*/,
-        fmiBoolean /*newStep*/,
-        fmiReal& /*endOfStep*/) override
+        cppfmu::FMIReal /*currentCommunicationPoint*/,
+        cppfmu::FMIReal /*dt*/,
+        cppfmu::FMIBoolean /*newStep*/,
+        cppfmu::FMIReal& /*endOfStep*/) override
     {
         return true;
     }
 
 private:
-    fmiReal m_real;
-    fmiInteger m_integer;
-    fmiBoolean m_boolean;
+    cppfmu::FMIReal m_real;
+    cppfmu::FMIInteger m_integer;
+    cppfmu::FMIBoolean m_boolean;
     cppfmu::String m_string;
 };
 
 
 cppfmu::UniquePtr<cppfmu::SlaveInstance> CppfmuInstantiateSlave(
-    fmiString  /*instanceName*/,
-    fmiString  fmuGUID,
-    fmiString  /*fmuLocation*/,
-    fmiString  /*mimeType*/,
-    fmiReal    /*timeout*/,
-    fmiBoolean /*visible*/,
-    fmiBoolean /*interactive*/,
+    cppfmu::FMIString  /*instanceName*/,
+    cppfmu::FMIString  fmuGUID,
+    cppfmu::FMIString  /*fmuResourceLocation*/,
+    cppfmu::FMIString  /*mimeType*/,
+    cppfmu::FMIReal    /*timeout*/,
+    cppfmu::FMIBoolean /*visible*/,
+    cppfmu::FMIBoolean /*interactive*/,
     cppfmu::Memory memory,
     cppfmu::Logger /*logger*/)
 {

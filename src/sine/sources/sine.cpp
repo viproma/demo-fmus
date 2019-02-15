@@ -1,4 +1,4 @@
-// Copyright 2015-2017, SINTEF Ocean.
+// Copyright 2015-2019, SINTEF Ocean.
 // Distributed under the 3-Clause BSD License.
 // (See accompanying file LICENCE.txt or copy at
 // https://github.com/viproma/demo-fmus/raw/master/LICENCE.txt.)
@@ -35,9 +35,9 @@ public:
     }
 
     void SetReal(
-        const fmiValueReference vr[],
+        const cppfmu::FMIValueReference vr[],
         std::size_t nvr,
-        const fmiReal value[])
+        const cppfmu::FMIReal value[])
         override
     {
         for (std::size_t i = 0; i < nvr; ++i) {
@@ -49,9 +49,9 @@ public:
     }
 
     void GetReal(
-        const fmiValueReference vr[],
+        const cppfmu::FMIValueReference vr[],
         std::size_t nvr,
-        fmiReal value[])
+        cppfmu::FMIReal value[])
         const override
     {
         for (std::size_t i = 0; i < nvr; ++i) {
@@ -66,20 +66,22 @@ public:
     }
 
 private:
-    void Initialize(
-        fmiReal tStart,
-        fmiBoolean /*stopTimeDefined*/,
-        fmiReal /*tStop*/)
+    void SetupExperiment(
+        cppfmu::FMIBoolean /*toleranceDefined*/,
+        cppfmu::FMIReal /*tolerance*/,
+        cppfmu::FMIReal tStart,
+        cppfmu::FMIBoolean /*stopTimeDefined*/,
+        cppfmu::FMIReal /*tStop*/)
         override
     {
         m_time = tStart;
     }
 
     bool DoStep(
-        fmiReal currentCommunicationPoint,
-        fmiReal communicationStepSize,
-        fmiBoolean /*newStep*/,
-        fmiReal& /*endOfStep*/)
+        cppfmu::FMIReal currentCommunicationPoint,
+        cppfmu::FMIReal communicationStepSize,
+        cppfmu::FMIBoolean /*newStep*/,
+        cppfmu::FMIReal& /*endOfStep*/)
         override
     {
         m_time = currentCommunicationPoint + communicationStepSize;
@@ -94,7 +96,7 @@ private:
         m_input[VR_w] = 1.0;
     }
 
-    fmiReal Calculate() const CPPFMU_NOEXCEPT
+    cppfmu::FMIReal Calculate() const CPPFMU_NOEXCEPT
     {
         return m_input[VR_a]
              + m_input[VR_b] * std::sin(
@@ -104,19 +106,19 @@ private:
                );
     }
 
-    fmiReal m_time;
-    fmiReal m_input[VR_INPUT_COUNT];
+    cppfmu::FMIReal m_time;
+    cppfmu::FMIReal m_input[VR_INPUT_COUNT];
 };
 
 
 cppfmu::UniquePtr<cppfmu::SlaveInstance> CppfmuInstantiateSlave(
-    fmiString  /*instanceName*/,
-    fmiString  fmuGUID,
-    fmiString  /*fmuLocation*/,
-    fmiString  /*mimeType*/,
-    fmiReal    /*timeout*/,
-    fmiBoolean /*visible*/,
-    fmiBoolean /*interactive*/,
+    cppfmu::FMIString  /*instanceName*/,
+    cppfmu::FMIString  fmuGUID,
+    cppfmu::FMIString  /*fmuResourceLocation*/,
+    cppfmu::FMIString  /*mimeType*/,
+    cppfmu::FMIReal    /*timeout*/,
+    cppfmu::FMIBoolean /*visible*/,
+    cppfmu::FMIBoolean /*interactive*/,
     cppfmu::Memory memory,
     cppfmu::Logger /*logger*/)
 {

@@ -1,4 +1,4 @@
-// Copyright 2015-2017, SINTEF Ocean.
+// Copyright 2015-2019, SINTEF Ocean.
 // Distributed under the 3-Clause BSD License.
 // (See accompanying file LICENCE.txt or copy at
 // https://github.com/viproma/demo-fmus/raw/master/LICENCE.txt.)
@@ -37,9 +37,9 @@ private:
     }
 
     void SetReal(
-        const fmiValueReference vr[],
+        const cppfmu::FMIValueReference vr[],
         std::size_t nvr,
-        const fmiReal value[]) override
+        const cppfmu::FMIReal value[]) override
     {
         for (std::size_t i = 0; i < nvr; ++i) {
             m_values[vr[i]] = value[i];
@@ -47,9 +47,9 @@ private:
     }
 
     void GetReal(
-        const fmiValueReference vr[],
+        const cppfmu::FMIValueReference vr[],
         std::size_t nvr,
-        fmiReal value[]) const override
+        cppfmu::FMIReal value[]) const override
     {
         for (std::size_t i = 0; i < nvr; ++i) {
             if (vr[i] == VR_force_a) {
@@ -63,33 +63,33 @@ private:
     }
 
     bool DoStep(
-        fmiReal /*currentCommunicationPoint*/,
-        fmiReal /*communicationStepSize*/,
-        fmiBoolean /*newStep*/,
-        fmiReal& /*endOfStep*/) override
+        cppfmu::FMIReal /*currentCommunicationPoint*/,
+        cppfmu::FMIReal /*communicationStepSize*/,
+        cppfmu::FMIBoolean /*newStep*/,
+        cppfmu::FMIReal& /*endOfStep*/) override
     {
         return true;
     }
 
-    fmiReal Force() const
+    cppfmu::FMIReal Force() const
     {
         const auto excitedLength = m_values[VR_pos_b] - m_values[VR_pos_a];
         const auto deltaLength = excitedLength - m_values[VR_length];
         return - m_values[VR_stiffness] * deltaLength;
     }
 
-    fmiReal m_values[VR_COUNT];
+    cppfmu::FMIReal m_values[VR_COUNT];
 };
 
 
 cppfmu::UniquePtr<cppfmu::SlaveInstance> CppfmuInstantiateSlave(
-    fmiString  /*instanceName*/,
-    fmiString  fmuGUID,
-    fmiString  /*fmuLocation*/,
-    fmiString  /*mimeType*/,
-    fmiReal    /*timeout*/,
-    fmiBoolean /*visible*/,
-    fmiBoolean /*interactive*/,
+    cppfmu::FMIString  /*instanceName*/,
+    cppfmu::FMIString  fmuGUID,
+    cppfmu::FMIString  /*fmuResourceLocation*/,
+    cppfmu::FMIString  /*mimeType*/,
+    cppfmu::FMIReal    /*timeout*/,
+    cppfmu::FMIBoolean /*visible*/,
+    cppfmu::FMIBoolean /*interactive*/,
     cppfmu::Memory memory,
     cppfmu::Logger /*logger*/)
 {

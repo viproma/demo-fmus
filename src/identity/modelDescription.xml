@@ -1,32 +1,35 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <fmiModelDescription
-    fmiVersion="1.0"
+    fmiVersion="2.0"
     modelName="no.viproma.demo.identity"
-    modelIdentifier="identity"
     guid="@FMU_UUID@"
-    author="Lars Tandle Kyllingstad"
     description="Has one input and one output of each type, and outputs are always set equal to inputs"
+    author="Lars Tandle Kyllingstad"
     version="0.3"
-    variableNamingConvention="structured"
-    numberOfContinuousStates="0"
-    numberOfEventIndicators="0">
+    copyright="Copyright 2015-2019, SINTEF Ocean"
+    license="3-Clause BSD license">
+
+    <CoSimulation
+        modelIdentifier="identity"
+        canHandleVariableCommunicationStepSize="true" />
 
     <ModelVariables>
-        <ScalarVariable name="realIn"     valueReference="0" variability="discrete" causality="input"               ><Real    start="0.0"   /></ScalarVariable>
-        <ScalarVariable name="integerIn"  valueReference="0" variability="discrete" causality="input"               ><Integer start="0"     /></ScalarVariable>
-        <ScalarVariable name="booleanIn"  valueReference="0" variability="discrete" causality="input"               ><Boolean start="false" /></ScalarVariable>
-        <ScalarVariable name="stringIn"   valueReference="0" variability="discrete" causality="input"               ><String  start=""      /></ScalarVariable>
-        <ScalarVariable name="realOut"    valueReference="0" variability="discrete" causality="output" alias="alias"><Real                  /></ScalarVariable>
-        <ScalarVariable name="integerOut" valueReference="0" variability="discrete" causality="output" alias="alias"><Integer               /></ScalarVariable>
-        <ScalarVariable name="booleanOut" valueReference="0" variability="discrete" causality="output" alias="alias"><Boolean               /></ScalarVariable>
-        <ScalarVariable name="stringOut"  valueReference="0" variability="discrete" causality="output" alias="alias"><String                /></ScalarVariable>
+        <ScalarVariable name="realIn"     valueReference="0" variability="discrete" causality="input" ><Real    start="0.0"   /></ScalarVariable>
+        <ScalarVariable name="integerIn"  valueReference="0" variability="discrete" causality="input" ><Integer start="0"     /></ScalarVariable>
+        <ScalarVariable name="booleanIn"  valueReference="0" variability="discrete" causality="input" ><Boolean start="false" /></ScalarVariable>
+        <ScalarVariable name="stringIn"   valueReference="0" variability="discrete" causality="input" ><String  start=""      /></ScalarVariable>
+        <ScalarVariable name="realOut"    valueReference="0" variability="discrete" causality="output"><Real                  /></ScalarVariable>
+        <ScalarVariable name="integerOut" valueReference="0" variability="discrete" causality="output"><Integer               /></ScalarVariable>
+        <ScalarVariable name="booleanOut" valueReference="0" variability="discrete" causality="output"><Boolean               /></ScalarVariable>
+        <ScalarVariable name="stringOut"  valueReference="0" variability="discrete" causality="output"><String                /></ScalarVariable>
     </ModelVariables>
 
-    <Implementation>
-        <CoSimulation_StandAlone>
-            <Capabilities
-                canHandleVariableCommunicationStepSize="true"
-                canBeInstantiatedOnlyOncePerProcess="false" />
-        </CoSimulation_StandAlone>
-    </Implementation>
+    <ModelStructure>
+        <Outputs>
+            <Unknown index="5" dependencies="1" dependenciesKind="constant" />
+            <Unknown index="6" dependencies="2" dependenciesKind="constant" />
+            <Unknown index="7" dependencies="3" dependenciesKind="constant" />
+            <Unknown index="8" dependencies="4" dependenciesKind="constant" />
+        </Outputs>
+    </ModelStructure>
 </fmiModelDescription>
